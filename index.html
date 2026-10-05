@@ -1,23 +1,170 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>القرب من الله</title>
+
+<style>
+body{
+font-family:Tahoma,Arial;
+background:#f5f1e8;
+margin:0;
+color:#333;
+}
+
+header{
+background:#075e42;
+color:white;
+padding:25px;
+text-align:center;
+font-size:28px;
+}
+
+.container{
+padding:15px;
+}
+
+.card{
+background:white;
+padding:20px;
+margin:15px 0;
+border-radius:15px;
+box-shadow:0 3px 10px #bbb;
+text-align:center;
+}
+
+button{
+background:#075e42;
+color:white;
+border:0;
+padding:12px 25px;
+border-radius:20px;
+font-size:16px;
+cursor:pointer;
+}
+
+input{
+padding:10px;
+width:90%;
+border-radius:8px;
+border:1px solid #aaa;
+}
+
+table{
+width:100%;
+border-collapse:collapse;
+}
+
+td,th{
+border:1px solid #999;
+padding:8px;
+}
+
+footer{
+background:#075e42;
+color:white;
+padding:15px;
+text-align:center;
+}
+</style>
+
+</head>
+
+
+<body>
+
+<header>
+🌙 تطبيق القرب من الله
+</header>
+
+
+<div class="container">
+
+
+<div class="card">
+<h2>📖 القرآن الكريم</h2>
+<p>وردك اليومي من كتاب الله</p>
+<button>فتح القرآن</button>
+</div>
+
+
+<div class="card">
+<h2>🤲 الأذكار</h2>
+<p>
+سبحان الله • الحمد لله • الله أكبر
+</p>
+<button>الأذكار</button>
+</div>
+
+
+
+<div class="card">
+
+<h2>📚 ختمة القرآن</h2>
+
+<table>
+
+<tr>
+<th>الجزء</th>
+<th>اسم القارئ</th>
+<th>تم</th>
+</tr>
+
+<script>
+
+for(let i=1;i<=30;i++){
+
+document.write(`
+<tr>
+<td>الجزء ${i}</td>
+<td><input placeholder="الاسم"></td>
+<td><input type="checkbox"></td>
+</tr>
+`);
+
+}
+
+</script>
+
+</table>
+
+</div>
+
+
+
 <div class="card">
 
 <h2>📝 المسابقة الإسلامية</h2>
 
-<input id="name" placeholder="اكتب اسمك هنا">
+<input id="name" placeholder="اكتب اسمك">
 
 <br><br>
 
 <div id="quiz"></div>
 
-<button onclick="nextQuestion()">السؤال التالي</button>
+<button onclick="nextQuestion()">
+السؤال التالي
+</button>
 
 <h3 id="result"></h3>
 
 </div>
 
 
+</div>
+
+
+<footer>
+اللهم اجعل هذا العمل خالصاً لوجهك ❤️
+</footer>
+
+
+
 <script>
 
-let questions = [
+let questions=[
 
 {
 q:"كم عدد أركان الإسلام؟",
@@ -26,57 +173,27 @@ correct:1
 },
 
 {
-q:"ما أول سورة في القرآن الكريم؟",
-a:["الفاتحة","البقرة","الإخلاص"],
+q:"ما أول سورة في القرآن؟",
+a:["الفاتحة","البقرة","الناس"],
 correct:0
 },
 
 {
 q:"كم عدد الصلوات المفروضة؟",
-a:["3","5","6"],
+a:["3","5","7"],
 correct:1
 },
 
 {
-q:"ما اسم شهر الصيام؟",
-a:["رمضان","شعبان","محرم"],
+q:"ما شهر الصيام؟",
+a:["رمضان","رجب","شعبان"],
 correct:0
 },
 
 {
-q:"ما هو كتاب المسلمين؟",
-a:["التوراة","القرآن الكريم","الإنجيل"],
-correct:1
-},
-
-{
-q:"من هو خاتم الأنبياء؟",
-a:["موسى عليه السلام","عيسى عليه السلام","محمد ﷺ"],
-correct:2
-},
-
-{
-q:"كم عدد أجزاء القرآن الكريم؟",
-a:["20","30","40"],
-correct:1
-},
-
-{
-q:"ما هي قبلة المسلمين؟",
-a:["المسجد النبوي","الكعبة","المسجد الأقصى"],
-correct:1
-},
-
-{
-q:"ما أول أركان الإسلام؟",
-a:["الصلاة","الشهادة","الزكاة"],
-correct:1
-},
-
-{
-q:"في أي شهر يكون الحج؟",
-a:["رمضان","ذو الحجة","رجب"],
-correct:1
+q:"ما كتاب المسلمين؟",
+a:["القرآن الكريم","التوراة","الإنجيل"],
+correct:0
 }
 
 ];
@@ -92,13 +209,14 @@ let q=questions[current];
 
 let html="<h3>"+(current+1)+"- "+q.q+"</h3>";
 
-q.a.forEach((x,i)=>{
+q.a.forEach((item,index)=>{
 
 html+=`
 <label>
-<input type="radio" name="answer" value="${i}">
-${x}
-</label><br><br>
+<input type="radio" name="answer" value="${index}">
+${item}
+</label>
+<br>
 `;
 
 });
@@ -109,19 +227,9 @@ document.getElementById("quiz").innerHTML=html;
 }
 
 
-
 function nextQuestion(){
 
-let name=document.getElementById("name").value;
-
-if(name==""){
-alert("اكتب اسمك أولاً");
-return;
-}
-
-
 let answer=document.querySelector('input[name="answer"]:checked');
-
 
 if(!answer){
 alert("اختر إجابة");
@@ -129,7 +237,7 @@ return;
 }
 
 
-if(Number(answer.value)==questions[current].correct){
+if(answer.value==questions[current].correct){
 score++;
 }
 
@@ -137,7 +245,7 @@ score++;
 current++;
 
 
-if(current < questions.length){
+if(current<questions.length){
 
 showQuestion();
 
@@ -145,10 +253,12 @@ showQuestion();
 
 else{
 
+let name=document.getElementById("name").value;
+
 document.getElementById("quiz").innerHTML="انتهى الاختبار 🎉";
 
 document.getElementById("result").innerHTML=
-name+" نتيجتك: "+score+" من "+questions.length;
+name+" نتيجتك "+score+" من "+questions.length;
 
 }
 
@@ -157,4 +267,63 @@ name+" نتيجتك: "+score+" من "+questions.length;
 
 showQuestion();
 
-  </script>
+</script>
+
+
+</body>
+</html>
+let questions=[
+
+{q:"كم عدد أركان الإسلام؟",a:["3","5","7"],correct:1},
+{q:"ما أول سورة في القرآن الكريم؟",a:["الفاتحة","البقرة","الناس"],correct:0},
+{q:"كم عدد الصلوات المفروضة؟",a:["3","5","7"],correct:1},
+{q:"ما شهر الصيام؟",a:["رمضان","رجب","شعبان"],correct:0},
+{q:"ما كتاب المسلمين؟",a:["القرآن الكريم","التوراة","الإنجيل"],correct:0},
+
+{q:"من هو خاتم الأنبياء؟",a:["موسى عليه السلام","محمد ﷺ","نوح عليه السلام"],correct:1},
+{q:"كم عدد أجزاء القرآن؟",a:["20","30","40"],correct:1},
+{q:"ما قبلة المسلمين؟",a:["الكعبة","المدينة","القدس"],correct:0},
+{q:"ما أول أركان الإسلام؟",a:["الصلاة","الشهادة","الزكاة"],correct:1},
+{q:"في أي شهر الحج؟",a:["رمضان","ذو الحجة","محرم"],correct:1},
+
+{q:"كم عدد سور القرآن؟",a:["114","100","120"],correct:0},
+{q:"ما أطول سورة في القرآن؟",a:["البقرة","يس","الفاتحة"],correct:0},
+{q:"ما أقصر سورة في القرآن؟",a:["الكوثر","الإخلاص","العصر"],correct:0},
+{q:"كم عدد ركعات صلاة الفجر؟",a:["2","3","4"],correct:0},
+{q:"كم عدد ركعات صلاة المغرب؟",a:["2","3","4"],correct:1},
+
+{q:"من هو أول الخلفاء الراشدين؟",a:["عمر","أبو بكر","عثمان"],correct:1},
+{q:"من هو النبي الذي ابتلعه الحوت؟",a:["يونس","يوسف","أيوب"],correct:0},
+{q:"من هو خليل الله؟",a:["إبراهيم","موسى","عيسى"],correct:0},
+{q:"ما اسم أم النبي ﷺ؟",a:["آمنة بنت وهب","خديجة","فاطمة"],correct:0},
+{q:"أين ولد النبي ﷺ؟",a:["مكة","المدينة","القدس"],correct:0},
+
+{q:"ما اسم أول مسجد بني في الإسلام؟",a:["قباء","الحرام","الأقصى"],correct:0},
+{q:"ما ليلة نزول القرآن؟",a:["ليلة القدر","ليلة العيد","ليلة الجمعة"],correct:0},
+{q:"ما السورة التي لا تبدأ بالبسملة؟",a:["التوبة","البقرة","الملك"],correct:0},
+{q:"ما الصلاة الوسطى؟",a:["العصر","الفجر","المغرب"],correct:0},
+{q:"كم مرة ذكرت الصلاة في اليوم؟",a:["5","3","10"],correct:0},
+
+{q:"ما اسم والد النبي ﷺ؟",a:["عبدالله","أبو طالب","حمزة"],correct:0},
+{q:"من أول مؤذن في الإسلام؟",a:["بلال","عمر","علي"],correct:0},
+{q:"ما معنى الزكاة؟",a:["الطهارة والنماء","النوم","السفر"],correct:0},
+{q:"ما أفضل الأيام؟",a:["يوم الجمعة","الاثنين","الثلاثاء"],correct:0},
+{q:"ما السورة التي تسمى أم الكتاب؟",a:["الفاتحة","يس","الملك"],correct:0},
+
+{q:"كم عدد أسماء الله الحسنى؟",a:["99","50","100"],correct:0},
+{q:"من هو النبي الذي كلمه الله؟",a:["موسى","عيسى","يوسف"],correct:0},
+{q:"ما أول شهر في السنة الهجرية؟",a:["محرم","صفر","رجب"],correct:0},
+{q:"ما آخر سورة في القرآن؟",a:["الناس","الفلق","الإخلاص"],correct:0},
+{q:"ما اسم والد إبراهيم عليه السلام؟",a:["آزر","يعقوب","إسحاق"],correct:0},
+
+{q:"من هو النبي الذي صنع السفينة؟",a:["نوح","هود","صالح"],correct:0},
+{q:"ما عدد أيام رمضان غالباً؟",a:["29 أو 30","20","40"],correct:0},
+{q:"ما أفضل الذكر؟",a:["لا إله إلا الله","النوم","الصمت"],correct:0},
+{q:"ما اسم زوجة النبي الأولى؟",a:["خديجة","عائشة","حفصة"],correct:0},
+{q:"ما اسم والد عيسى عليه السلام؟",a:["لا يوجد له والد","إبراهيم","نوح"],correct:0},
+
+{q:"ما السورة التي تعدل ثلث القرآن؟",a:["الإخلاص","الفاتحة","الناس"],correct:0},
+{q:"من هو ثاني الخلفاء الراشدين؟",a:["عمر بن الخطاب","عثمان","علي"],correct:0},
+{q:"من هو ثالث الخلفاء الراشدين؟",a:["عثمان","عمر","أبو بكر"],correct:0},
+{q:"من هو رابع الخلفاء الراشدين؟",a:["علي بن أبي طالب","عمر","عثمان"],correct:0},
+{q:"ما اسم آخر سورة في المصحف؟",a
