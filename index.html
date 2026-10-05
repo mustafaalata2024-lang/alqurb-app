@@ -1,207 +1,99 @@
-<!DOCTYPE html>
-<html lang="ar" dir="rtl">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-<title>القرب من الله</title>
-
-<style>
-
-body{
-font-family:Tahoma;
-background:#f5f1e8;
-margin:0;
-color:#333;
-}
-
-header{
-background:#075e42;
-color:white;
-padding:25px;
-text-align:center;
-font-size:28px;
-}
-
-.container{
-padding:15px;
-}
-
-.card{
-background:white;
-border-radius:15px;
-padding:20px;
-margin:15px 0;
-box-shadow:0 3px 10px #bbb;
-text-align:center;
-}
-
-button{
-background:#075e42;
-color:white;
-border:0;
-padding:12px 25px;
-border-radius:20px;
-font-size:16px;
-}
-
-input{
-width:90%;
-padding:8px;
-border-radius:8px;
-border:1px solid #aaa;
-}
-
-table{
-width:100%;
-border-collapse:collapse;
-}
-
-td,th{
-padding:8px;
-}
-
-footer{
-background:#075e42;
-color:white;
-text-align:center;
-padding:15px;
-}
-
-</style>
-
-</head>
-
-<body>
-
-
-<header>
-🌙 تطبيق القرب من الله
-</header>
-
-
-<div class="container">
-
-
-<div class="card">
-<h2>📖 القرآن الكريم</h2>
-<p>ابدأ وردك اليومي من كتاب الله</p>
-<button>فتح القرآن</button>
-</div>
-
-
-<div class="card">
-<h2>🤲 الأذكار</h2>
-<p>سبحان الله • الحمد لله • الله أكبر</p>
-<button>الأذكار</button>
-</div>
-
-
-<div class="card">
-
-<h2>📚 ختمة القرآن</h2>
-
-<p>سجل قراءتك اليومية</p>
-
-
-<table border="1">
-
-<tr>
-<th>الجزء</th>
-<th>اسم القارئ</th>
-<th>تم</th>
-</tr>
-
-
-<script>
-
-for(let i=1;i<=30;i++){
-
-document.write(`
-
-<tr>
-
-<td>
-الجزء ${i}
-</td>
-
-<td>
-<input placeholder="اكتب اسمك">
-</td>
-
-<td>
-<input type="checkbox">
-</td>
-
-</tr>
-
-`);
-
-}
-
-</script>
-
-
-</table>
-
-<br>
-
-<button onclick="saveData()">
-حفظ المشاركة
-</button>
-
-
-</div>
-
-
-
 <div class="card">
 
 <h2>📝 المسابقة الإسلامية</h2>
 
-<p>
-اختبر معلوماتك الدينية
-</p>
+<div id="quiz"></div>
 
-<button>
-ابدأ الاختبار
-</button>
+<button onclick="nextQuestion()">السؤال التالي</button>
+
+<h3 id="result"></h3>
 
 </div>
-
-
-
-<div class="card">
-
-<h2>🌿 دعاء اليوم</h2>
-
-<p>
-اللهم أعنا على ذكرك وشكرك وحسن عبادتك
-</p>
-
-</div>
-
-
-</div>
-
-
-<footer>
-
-نسأل الله أن يجعل التطبيق طريقاً للقرب منه ❤️
-
-</footer>
 
 
 <script>
 
-function saveData(){
+let questions = [
+{
+q:"كم عدد أركان الإسلام؟",
+a:["3","5","7"],
+correct:1
+},
 
-alert("تم الحفظ بنجاح بإذن الله");
+{
+q:"ما أول سورة في القرآن الكريم؟",
+a:["الفاتحة","البقرة","الناس"],
+correct:0
+},
+
+{
+q:"كم عدد الصلوات المفروضة في اليوم؟",
+a:["3","5","7"],
+correct:1
+}
+];
+
+
+let current=0;
+let score=0;
+
+
+function showQuestion(){
+
+let q=questions[current];
+
+let html=
+"<h3>"+q.q+"</h3>";
+
+q.a.forEach((x,i)=>{
+
+html+=`
+<label>
+<input type="radio" name="answer" value="${i}">
+${x}
+</label><br>
+`;
+
+});
+
+document.getElementById("quiz").innerHTML=html;
 
 }
 
+
+function nextQuestion(){
+
+let answer=document.querySelector('input[name="answer"]:checked');
+
+if(!answer){
+alert("اختر إجابة أولاً");
+return;
+}
+
+if(Number(answer.value)==questions[current].correct){
+score++;
+}
+
+
+current++;
+
+
+if(current<questions.length){
+
+showQuestion();
+
+}else{
+
+document.getElementById("quiz").innerHTML="انتهى الاختبار";
+
+document.getElementById("result").innerHTML=
+"درجتك: "+score+" من "+questions.length;
+
+}
+
+}
+
+
+showQuestion();
+
 </script>
-
-
-</body>
-</html>
