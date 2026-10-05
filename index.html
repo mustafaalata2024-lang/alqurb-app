@@ -2,6 +2,10 @@
 
 <h2>📝 المسابقة الإسلامية</h2>
 
+<input id="name" placeholder="اكتب اسمك هنا">
+
+<br><br>
+
 <div id="quiz"></div>
 
 <button onclick="nextQuestion()">السؤال التالي</button>
@@ -14,6 +18,7 @@
 <script>
 
 let questions = [
+
 {
 q:"كم عدد أركان الإسلام؟",
 a:["3","5","7"],
@@ -22,15 +27,58 @@ correct:1
 
 {
 q:"ما أول سورة في القرآن الكريم؟",
-a:["الفاتحة","البقرة","الناس"],
+a:["الفاتحة","البقرة","الإخلاص"],
 correct:0
 },
 
 {
-q:"كم عدد الصلوات المفروضة في اليوم؟",
-a:["3","5","7"],
+q:"كم عدد الصلوات المفروضة؟",
+a:["3","5","6"],
+correct:1
+},
+
+{
+q:"ما اسم شهر الصيام؟",
+a:["رمضان","شعبان","محرم"],
+correct:0
+},
+
+{
+q:"ما هو كتاب المسلمين؟",
+a:["التوراة","القرآن الكريم","الإنجيل"],
+correct:1
+},
+
+{
+q:"من هو خاتم الأنبياء؟",
+a:["موسى عليه السلام","عيسى عليه السلام","محمد ﷺ"],
+correct:2
+},
+
+{
+q:"كم عدد أجزاء القرآن الكريم؟",
+a:["20","30","40"],
+correct:1
+},
+
+{
+q:"ما هي قبلة المسلمين؟",
+a:["المسجد النبوي","الكعبة","المسجد الأقصى"],
+correct:1
+},
+
+{
+q:"ما أول أركان الإسلام؟",
+a:["الصلاة","الشهادة","الزكاة"],
+correct:1
+},
+
+{
+q:"في أي شهر يكون الحج؟",
+a:["رمضان","ذو الحجة","رجب"],
 correct:1
 }
+
 ];
 
 
@@ -42,8 +90,7 @@ function showQuestion(){
 
 let q=questions[current];
 
-let html=
-"<h3>"+q.q+"</h3>";
+let html="<h3>"+(current+1)+"- "+q.q+"</h3>";
 
 q.a.forEach((x,i)=>{
 
@@ -51,24 +98,36 @@ html+=`
 <label>
 <input type="radio" name="answer" value="${i}">
 ${x}
-</label><br>
+</label><br><br>
 `;
 
 });
+
 
 document.getElementById("quiz").innerHTML=html;
 
 }
 
 
+
 function nextQuestion(){
+
+let name=document.getElementById("name").value;
+
+if(name==""){
+alert("اكتب اسمك أولاً");
+return;
+}
+
 
 let answer=document.querySelector('input[name="answer"]:checked');
 
+
 if(!answer){
-alert("اختر إجابة أولاً");
+alert("اختر إجابة");
 return;
 }
+
 
 if(Number(answer.value)==questions[current].correct){
 score++;
@@ -78,16 +137,18 @@ score++;
 current++;
 
 
-if(current<questions.length){
+if(current < questions.length){
 
 showQuestion();
 
-}else{
+}
 
-document.getElementById("quiz").innerHTML="انتهى الاختبار";
+else{
+
+document.getElementById("quiz").innerHTML="انتهى الاختبار 🎉";
 
 document.getElementById("result").innerHTML=
-"درجتك: "+score+" من "+questions.length;
+name+" نتيجتك: "+score+" من "+questions.length;
 
 }
 
@@ -96,4 +157,4 @@ document.getElementById("result").innerHTML=
 
 showQuestion();
 
-</script>
+  </script>
