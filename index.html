@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+here<!DOCTYPE html>
 <html lang="ar" dir="rtl">
 <head>
     <meta charset="UTF-8">
@@ -11,9 +11,9 @@
     <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700&display=swap" rel="stylesheet">
     <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
     <style>
-        body { font-family: 'Cairo', sans-serif; background-color: #0f2a1d; user-select: none; }
-        .screen { display: none; }
-        .screen.active { display: flex; }
+        body { font-family: 'Cairo', sans-serif; background-color: #0f2a1d; user-select: none; -webkit-tap-highlight-color: transparent; }
+        .screen { display: none !important; }
+        .screen.active { display: flex !important; }
     </style>
 </head>
 <body class="flex justify-center items-center min-h-screen bg-gray-900 m-0">
@@ -28,7 +28,7 @@
                 <span id="screen-title" class="text-sm font-bold">القرب من الله</span>
                 <span class="text-amber-400 text-lg">🌙</span>
             </div>
-            <div class="flex gap-3 text-amber-300 cursor-pointer" onclick="switchScreen('home-screen', 'القرب من الله')">
+            <div class="flex gap-3 text-amber-300 cursor-pointer" onclick="window.switchScreen('home-screen', 'القرب من الله')">
                 <span>🏠</span>
             </div>
         </div>
@@ -47,7 +47,7 @@
                     ﴿ وَمَا تَقَرَّبَ إِلَيَّ عَبْدِي بِشَيْءٍ أَحَبَّ إِلَيَّ مِمَّا افْتَرَضْتُ عَلَيْهِ ﴾
                     <div class="text-[10px] text-amber-400 mt-2">(سورة البقرة، ٢٥٧)</div>
                 </div>
-                <button onclick="switchScreen('home-screen', 'القرب من الله')" class="w-full bg-emerald-600 hover:bg-emerald-500 py-3 rounded-2xl font-bold text-sm shadow-lg text-white">ابدأ رحلتك</button>
+                <button onclick="window.switchScreen('home-screen', 'القرب من الله')" class="w-full bg-emerald-600 hover:bg-emerald-500 py-3 rounded-2xl font-bold text-sm shadow-lg text-white cursor-pointer">ابدأ رحلتك</button>
             </div>
 
             <!-- 2. الشاشة الرئيسية (Home) -->
@@ -70,32 +70,32 @@
                 </div>
 
                 <div class="grid grid-cols-2 gap-3">
-                    <div onclick="switchScreen('quiz-screen', 'الأسئلة اليومية')" class="bg-[#fdfbf7] text-gray-800 p-3.5 rounded-2xl flex flex-col items-center text-center shadow cursor-pointer">
+                    <div onclick="window.switchScreen('quiz-screen', 'الأسئلة اليومية')" class="bg-[#fdfbf7] text-gray-800 p-3.5 rounded-2xl flex flex-col items-center text-center shadow cursor-pointer active:scale-95 transition-transform">
                         <div class="w-10 h-10 bg-amber-100 rounded-full flex items-center justify-center text-lg mb-1.5">❓</div>
                         <h3 class="font-bold text-xs text-[#113023]">الأسئلة اليومية</h3>
                         <p class="text-[10px] text-gray-500 mt-0.5">اختبر معلوماتك</p>
                     </div>
-                    <div onclick="switchScreen('leaderboard-screen', 'لوحة المتصدرين')" class="bg-[#fdfbf7] text-gray-800 p-3.5 rounded-2xl flex flex-col items-center text-center shadow cursor-pointer">
+                    <div onclick="window.switchScreen('leaderboard-screen', 'لوحة المتصدرين')" class="bg-[#fdfbf7] text-gray-800 p-3.5 rounded-2xl flex flex-col items-center text-center shadow cursor-pointer active:scale-95 transition-transform">
                         <div class="w-10 h-10 bg-amber-100 rounded-full flex items-center justify-center text-lg mb-1.5">🏆</div>
                         <h3 class="font-bold text-xs text-[#113023]">لوحة المتصدرين</h3>
                         <p class="text-[10px] text-gray-500 mt-0.5">معاً نحو القمة</p>
                     </div>
-                    <div onclick="switchScreen('azkar-screen', 'الأذكار')" class="bg-[#fdfbf7] text-gray-800 p-3.5 rounded-2xl flex flex-col items-center text-center shadow cursor-pointer">
+                    <div onclick="window.switchScreen('azkar-screen', 'الأذكار')" class="bg-[#fdfbf7] text-gray-800 p-3.5 rounded-2xl flex flex-col items-center text-center shadow cursor-pointer active:scale-95 transition-transform">
                         <div class="w-10 h-10 bg-emerald-100 rounded-full flex items-center justify-center text-lg mb-1.5">📿</div>
                         <h3 class="font-bold text-xs text-[#113023]">الأذكار</h3>
                         <p class="text-[10px] text-gray-500 mt-0.5">راحة للقلوب</p>
                     </div>
-                    <div onclick="switchScreen('quran-screen', 'القرآن الكريم')" class="bg-[#fdfbf7] text-gray-800 p-3.5 rounded-2xl flex flex-col items-center text-center shadow cursor-pointer">
+                    <div onclick="window.switchScreen('quran-screen', 'القرآن الكريم')" class="bg-[#fdfbf7] text-gray-800 p-3.5 rounded-2xl flex flex-col items-center text-center shadow cursor-pointer active:scale-95 transition-transform">
                         <div class="w-10 h-10 bg-blue-100 rounded-full flex items-center justify-center text-lg mb-1.5">📖</div>
                         <h3 class="font-bold text-xs text-[#113023]">القرآن الكريم</h3>
                         <p class="text-[10px] text-gray-500 mt-0.5">نور في حياتنا</p>
                     </div>
-                    <div onclick="switchScreen('announcements-screen', 'إعلانات المشرف')" class="bg-[#fdfbf7] text-gray-800 p-3.5 rounded-2xl flex flex-col items-center text-center shadow cursor-pointer">
+                    <div onclick="window.switchScreen('announcements-screen', 'إعلانات المشرف')" class="bg-[#fdfbf7] text-gray-800 p-3.5 rounded-2xl flex flex-col items-center text-center shadow cursor-pointer active:scale-95 transition-transform">
                         <div class="w-10 h-10 bg-rose-100 rounded-full flex items-center justify-center text-lg mb-1.5">📢</div>
                         <h3 class="font-bold text-xs text-[#113023]">إعلانات المشرف</h3>
                         <p class="text-[10px] text-gray-500 mt-0.5">كل جديد</p>
                     </div>
-                    <div onclick="switchScreen('profile-screen', 'الملف الشخصي')" class="bg-[#fdfbf7] text-gray-800 p-3.5 rounded-2xl flex flex-col items-center text-center shadow cursor-pointer">
+                    <div onclick="window.switchScreen('profile-screen', 'الملف الشخصي')" class="bg-[#fdfbf7] text-gray-800 p-3.5 rounded-2xl flex flex-col items-center text-center shadow cursor-pointer active:scale-95 transition-transform">
                         <div class="w-10 h-10 bg-purple-100 rounded-full flex items-center justify-center text-lg mb-1.5">👤</div>
                         <h3 class="font-bold text-xs text-[#113023]">الملف الشخصي</h3>
                         <p class="text-[10px] text-gray-500 mt-0.5">إحصائياتك</p>
@@ -115,7 +115,7 @@
                     <div class="bg-[#1b3b2b] p-2.5 rounded-xl border border-emerald-800 cursor-pointer">سورة يس</div>
                     <div class="bg-[#1b3b2b] p-2.5 rounded-xl border border-emerald-800 cursor-pointer">سورة الإخلاص</div>
                 </div>
-                <button class="w-full bg-emerald-600 hover:bg-emerald-500 py-2 rounded-xl text-xs font-bold mt-2">إرسال الإجابة</button>
+                <button class="w-full bg-emerald-600 hover:bg-emerald-500 py-2 rounded-xl text-xs font-bold mt-2 cursor-pointer">إرسال الإجابة</button>
             </div>
 
             <!-- 4. شاشة لوحة المتصدرين (Leaderboard) -->
@@ -138,8 +138,8 @@
             <!-- 5. شاشة الأذكار (Azkar) -->
             <div id="azkar-screen" class="screen flex-col space-y-2.5">
                 <div class="flex gap-2">
-                    <button class="flex-1 bg-emerald-600 py-1.5 rounded-xl text-xs font-bold">أذكار الصباح</button>
-                    <button class="flex-1 bg-[#1b3b2b] py-1.5 rounded-xl text-xs text-emerald-300">أذكار المساء</button>
+                    <button class="flex-1 bg-emerald-600 py-1.5 rounded-xl text-xs font-bold cursor-pointer">أذكار الصباح</button>
+                    <button class="flex-1 bg-[#1b3b2b] py-1.5 rounded-xl text-xs text-emerald-300 cursor-pointer">أذكار المساء</button>
                 </div>
                 <div class="bg-[#fdfbf7] text-gray-800 p-3 rounded-xl shadow">
                     <div class="flex justify-between items-center mb-1"><h4 class="font-bold text-xs text-[#113023]">آية الكرسي</h4><span class="text-[9px] bg-amber-100 text-amber-800 px-2 py-0.5 rounded-full">مرة واحدة</span></div>
@@ -164,7 +164,7 @@
                     </div>
                     <span class="bg-emerald-600 px-2.5 py-1 rounded-lg text-[10px]">1/1</span>
                 </div>
-                <button class="w-full bg-emerald-600 py-2 rounded-xl text-xs font-bold">قراءة القرآن</button>
+                <button class="w-full bg-emerald-600 py-2 rounded-xl text-xs font-bold cursor-pointer">قراءة القرآن</button>
             </div>
 
             <!-- 7. شاشة إعلانات المشرف (Announcements) -->
@@ -196,16 +196,16 @@
 
         <!-- شريط التنقل السفلي -->
         <div class="bg-[#113023] border-t border-emerald-900/60 py-2 px-6 flex justify-between items-center text-[10px] text-gray-300 shrink-0">
-            <div onclick="switchScreen('home-screen', 'القرب من الله')" class="flex flex-col items-center cursor-pointer hover:text-amber-400">
+            <div onclick="window.switchScreen('home-screen', 'القرب من الله')" class="flex flex-col items-center cursor-pointer hover:text-amber-400">
                 <span class="text-sm">🏠</span><span>الرئيسية</span>
             </div>
-            <div onclick="switchScreen('leaderboard-screen', 'لوحة المتصدرين')" class="flex flex-col items-center cursor-pointer hover:text-amber-400">
+            <div onclick="window.switchScreen('leaderboard-screen', 'لوحة المتصدرين')" class="flex flex-col items-center cursor-pointer hover:text-amber-400">
                 <span class="text-sm">🏆</span><span>النقاط</span>
             </div>
-            <div onclick="switchScreen('azkar-screen', 'الأذكار')" class="flex flex-col items-center cursor-pointer hover:text-amber-400">
+            <div onclick="window.switchScreen('azkar-screen', 'الأذكار')" class="flex flex-col items-center cursor-pointer hover:text-amber-400">
                 <span class="text-sm">📿</span><span>الأذكار</span>
             </div>
-            <div onclick="switchScreen('profile-screen', 'الملف الشخصي')" class="flex flex-col items-center cursor-pointer hover:text-amber-400">
+            <div onclick="window.switchScreen('profile-screen', 'الملف الشخصي')" class="flex flex-col items-center cursor-pointer hover:text-amber-400">
                 <span class="text-sm">👤</span><span>الملفي</span>
             </div>
         </div>
@@ -213,12 +213,18 @@
     </div>
 
     <script>
-        function switchScreen(screenId, titleText) {
+        window.switchScreen = function(screenId, titleText) {
             const screens = document.querySelectorAll('.screen');
             screens.forEach(s => s.classList.remove('active'));
-            document.getElementById(screenId).classList.add('active');
-            document.getElementById('screen-title').innerText = titleText;
-        }
+            const target = document.getElementById(screenId);
+            if (target) {
+                target.classList.add('active');
+            }
+            const titleEl = document.getElementById('screen-title');
+            if (titleEl) {
+                titleEl.innerText = titleText;
+            }
+        };
     </script>
 </body>
 </html>
